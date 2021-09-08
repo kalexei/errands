@@ -1,11 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import IndexPage from "./src/pages/index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import StartPage from "./src/pages/startPage";
 
 export default function App() {
+  const [username, setUsername] = useState<string | null>();
+
+  useEffect(() => {
+    async function getUserName() {
+      setUsername(await AsyncStorage.getItem("username"));
+    }
+    getUserName();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      {username ? <IndexPage /> : <StartPage />}
       <StatusBar style="auto" />
     </View>
   );
@@ -14,8 +26,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

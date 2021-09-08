@@ -1,6 +1,25 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "pretty": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components/index"],
+      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/utils/index"],
+      "@images/*": ["public/img/*"]
+    }
   }
 }
