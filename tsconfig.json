@@ -13,13 +13,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "baseUrl": ".",
-    "pretty": true,
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@components": ["src/components/index"],
-      "@utils/*": ["src/utils/*"],
-      "@utils": ["src/utils/index"],
-      "@images/*": ["public/img/*"]
-    }
+    "pretty": true
   }
 }

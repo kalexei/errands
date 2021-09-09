@@ -1,9 +1,13 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScreenParamList } from "src/utils/ScreenParamList";
 import IndexPage from "./src/pages/index";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import StartPage from "./src/pages/startPage";
+
+const Stack = createNativeStackNavigator<ScreenParamList>();
 
 export default function App() {
   const [username, setUsername] = useState<string | null>();
@@ -15,19 +19,18 @@ export default function App() {
     getUserName();
   }, []);
 
-  return (
-    <View style={styles.container}>
-      {username ? <IndexPage /> : <StartPage />}
-      <StatusBar style="auto" />
-    </View>
-  );
+  if (!username) {
+    return <StartPage />;
+  } else {
+    return (
+      <>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={IndexPage} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <StatusBar style="auto" />
+      </>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

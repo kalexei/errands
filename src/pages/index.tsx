@@ -10,7 +10,9 @@ const IndexPage = () => {
 };
 
 const styles = StyleSheet.create({
-  indexPage: {},
+  indexPage: {
+    flex: 1,
+  },
   text: {
     fontSize: 90,
   },
