@@ -4,8 +4,15 @@ import { useFonts, Montserrat_500Medium } from "@expo-google-fonts/montserrat";
 import { Inter_300Light, Inter_600SemiBold } from "@expo-google-fonts/inter";
 import AppLoading from "./loading";
 import Colors from "../utils/colors";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenParamList } from "../utils/ScreenParamList";
+import Container from "../components/Container";
 
-const StartPage = () => {
+type Props = {
+  navigation: NativeStackNavigationProp<ScreenParamList, "Start">;
+};
+
+const StartPage = ({ navigation }: Props) => {
   const [fontsLoaded] = useFonts({
     Montserrat_500Medium,
     Inter_300Light,
@@ -19,23 +26,29 @@ const StartPage = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logo}>
-        <Image source={require("../../public/img/icon.png")} />
-        <Text style={styles.title}>Errands</Text>
-        <Text style={styles.slogan}>A Task Manager For You</Text>
+    <Container>
+      <View style={styles.container}>
+        <View style={styles.logo}>
+          <Image source={require("../../public/img/icon.png")} />
+          <Text style={styles.title}>Errands</Text>
+          <Text style={styles.slogan}>A Task Manager For You</Text>
+        </View>
+        <Pressable
+          style={isPressed ? styles.buttonPressed : styles.button}
+          onPressIn={() => setPressed(true)}
+          onPressOut={() => setPressed(false)}
+          onPress={() => {
+            navigation.navigate("Login");
+          }}
+        >
+          <Text
+            style={isPressed ? styles.buttonTextPressed : styles.buttonText}
+          >
+            Get Started
+          </Text>
+        </Pressable>
       </View>
-      <Pressable
-        style={isPressed ? styles.buttonPressed : styles.button}
-        onPressIn={() => setPressed(true)}
-        onPressOut={() => setPressed(false)}
-        onPress={() => {}}
-      >
-        <Text style={isPressed ? styles.buttonTextPressed : styles.buttonText}>
-          Get Started
-        </Text>
-      </Pressable>
-    </View>
+    </Container>
   );
 };
 
@@ -43,10 +56,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    flexDirection: "column",
     justifyContent: "space-between",
-    paddingTop: 100,
-    paddingBottom: 50,
+    paddingVertical: 20,
   },
   logo: {
     display: "flex",

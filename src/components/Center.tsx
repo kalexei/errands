@@ -8,6 +8,7 @@ const Center: React.FC = ({ children }) => {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },

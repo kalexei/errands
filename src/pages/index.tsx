@@ -1,10 +1,20 @@
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
+import { ScreenParamList } from "../utils/ScreenParamList";
 
-const IndexPage = () => {
+type Props = {
+  navigation: NativeStackNavigationProp<ScreenParamList, "Home">;
+};
+
+const IndexPage = ({ navigation }: Props) => {
   return (
     <View style={styles.indexPage}>
       <Text style={styles.text}>index works!</Text>
+      <Button
+        title={"Settings"}
+        onPress={() => navigation.navigate("Settings")}
+      />
     </View>
   );
 };
