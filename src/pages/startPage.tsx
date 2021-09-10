@@ -5,11 +5,11 @@ import { Inter_300Light, Inter_600SemiBold } from "@expo-google-fonts/inter";
 import AppLoading from "./loading";
 import Colors from "../utils/colors";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ScreenParamList } from "../utils/ScreenParamList";
+import { IScreenParamList } from "../utils/types";
 import Container from "../components/Container";
 
 type Props = {
-  navigation: NativeStackNavigationProp<ScreenParamList, "Start">;
+  navigation: NativeStackNavigationProp<IScreenParamList, "Start">;
 };
 
 const StartPage = ({ navigation }: Props) => {

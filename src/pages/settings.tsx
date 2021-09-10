@@ -1,10 +1,10 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { Button, Text, View } from "react-native";
-import { ScreenParamList } from "../utils/ScreenParamList";
+import { IScreenParamList } from "../utils/types";
 
 type Props = {
-  navigation: NativeStackNavigationProp<ScreenParamList, "Settings">;
+  navigation: NativeStackNavigationProp<IScreenParamList, "Settings">;
 };
 
 const SettingsPage = ({ navigation }: Props) => {
