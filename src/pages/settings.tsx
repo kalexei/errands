@@ -1,13 +1,8 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { Button, Text, View } from "react-native";
-import { IScreenParamList } from "../utils/types";
+import { INavigationProps } from "../utils/types";
 
-type Props = {
-  navigation: NativeStackNavigationProp<IScreenParamList, "Settings">;
-};
-
-const SettingsPage = ({ navigation }: Props) => {
+const SettingsPage = ({ navigation }: INavigationProps<"Settings">) => {
   return (
     <View>
       <Text>Settings page</Text>

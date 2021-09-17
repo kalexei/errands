@@ -4,15 +4,10 @@ import { useFonts, Montserrat_500Medium } from "@expo-google-fonts/montserrat";
 import { Inter_300Light, Inter_600SemiBold } from "@expo-google-fonts/inter";
 import AppLoading from "./loading";
 import Colors from "../utils/colors";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { IScreenParamList } from "../utils/types";
+import { INavigationProps } from "../utils/types";
 import Container from "../components/Container";
 
-type Props = {
-  navigation: NativeStackNavigationProp<IScreenParamList, "Start">;
-};
-
-const StartPage = ({ navigation }: Props) => {
+const StartPage = ({ navigation }: INavigationProps<"Start">) => {
   const [fontsLoaded] = useFonts({
     Montserrat_500Medium,
     Inter_300Light,

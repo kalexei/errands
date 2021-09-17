@@ -1,14 +1,9 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { UserInfoContext } from "../utils/context";
-import { IScreenParamList } from "../utils/types";
+import { INavigationProps } from "../utils/types";
 
-type Props = {
-  navigation: NativeStackNavigationProp<IScreenParamList, "Home">;
-};
-
-const IndexPage = ({ navigation }: Props) => {
+const IndexPage = ({ navigation }: INavigationProps<"Home">) => {
   const { username } = useContext(UserInfoContext);
 
   return (
